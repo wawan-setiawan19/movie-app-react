@@ -23,7 +23,7 @@ function CarouselElement({ categories }) {
       {movie == null ? (
         <CarouselSkeleton />
       ) : (
-        <Carousel fade indicators={false} nextIcon={""} prevIcon={""}>
+        <Carousel fade={true} indicators={false} nextIcon={""} prevIcon={""}>
           {movie.map((element) => (
             <Carousel.Item key={element.id} interval={2000}>
               <img

@@ -20,7 +20,7 @@ function ListElement({ categories }) {
     <Row style={{ marginBottom: "10px" }}>
       {list == null ? (
         [1, 2, 3, 4, 5, 6, 7, 8].map(element => (
-          <Col xs={6} md={4} lg={3}>
+          <Col xs={6} md={4} lg={3} key={element}>
             <CardSkeleton/>
           </Col>
         ))
