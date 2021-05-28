@@ -1,0 +1,56 @@
+.title,
+.text,
+.button {
+  overflow: hidden;
+  position: relative;
+  margin-top: 10px;
+}
+
+.wrapper {
+  background-color: #ddd;
+  overflow: hidden;
+}
+
+.skeleton {
+  background-color: #bbb;
+  border-radius: 5px;
+}
+
+.button {
+  height: 40px;
+}
+
+.title {
+  height: 32px;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.text {
+  height: 24px;
+}
+
+.image {
+  max-height: 400px;
+  min-height: 300px;
+}
+
+.shimer {
+  position: absolute;
+  width: 20%;
+  height: 100%;
+  background-color: rgba(238, 238, 238, 0.2);
+  top: 0;
+  left: 0;
+  animation: loading 1s infinite alternate;
+}
+
+@keyframes loading {
+  0% {
+    transform: translateX(-160%) skewX(-20deg);
+  }
+
+  100% {
+    transform: translateX(400%) skewX(-20deg);
+  }
+}
