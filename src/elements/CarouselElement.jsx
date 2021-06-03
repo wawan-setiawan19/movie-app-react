@@ -15,8 +15,12 @@ function CarouselElement({ categories }) {
   };
 
   useEffect(() => {
+    let mounted = true;
     getData();
-  });
+    return function cleanup() {
+      mounted = false;
+    };
+  }, []);
 
   return (
     <>

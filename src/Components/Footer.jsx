@@ -3,6 +3,7 @@ import React from "react";
 function Footer() {
   return (
     <div
+      className='bg-gradient'
       style={{
         backgroundColor: "#000",
         color: "white",

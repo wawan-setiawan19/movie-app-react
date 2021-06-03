@@ -1,7 +1,8 @@
-import React from 'react'
-import { Button, Card } from 'react-bootstrap';
+import React from "react";
+import { Button, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-function CardElement({poster, title}) {
+function CardElement({ poster, title, idMovie }) {
   return (
     <Card style={{ marginTop: "20px" }}>
       <Card.Img
@@ -15,8 +16,13 @@ function CardElement({poster, title}) {
       >
         {title}
       </Card.Title>
-      <Button variant="primary" style={{ margin: "10px" }}>
-        Lihat Detail
+      <Button
+        className="bg-gradient"
+        style={{ margin: "10px", border: "none" }}
+      >
+        <Link to={`${idMovie}`} className="link">
+          Lihat Detail
+        </Link>
       </Button>
     </Card>
   );
@@ -24,7 +30,7 @@ function CardElement({poster, title}) {
 
 CardElement.defaultProps = {
   poster: "https://image.tmdb.org/t/p/original",
-  title: 'Title'
+  title: "Title",
 };
 
-export default CardElement
+export default CardElement;

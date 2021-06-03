@@ -13,24 +13,30 @@ function ListElement({ categories }) {
     setList(data.results);
   };
   useEffect(() => {
+    let mounted = true;
     getData();
-  });
+    return function cleanup() {
+      mounted = false;
+    };
+  }, []);
 
   return (
     <Row style={{ marginBottom: "10px" }}>
-      {list == null ? (
-        [1, 2, 3, 4, 5, 6, 7, 8].map(element => (
-          <Col xs={6} md={4} lg={3} key={element}>
-            <CardSkeleton/>
-          </Col>
-        ))
-      ) : (
-        list.map((element) => (
-          <Col xs={6} md={4} lg={3} key={element.id}>
-            <CardElement title={element.original_title} poster={ element.poster_path }/>
-          </Col>
-        ))
-      )}
+      {list == null
+        ? [1, 2, 3, 4, 5, 6, 7, 8].map((element) => (
+            <Col xs={6} md={4} lg={3} key={element}>
+              <CardSkeleton />
+            </Col>
+          ))
+        : list.map((element) => (
+            <Col xs={6} md={4} lg={3} key={element.id}>
+              <CardElement
+                title={element.original_title}
+                poster={element.poster_path}
+                idMovie={element.id}
+              />
+            </Col>
+          ))}
     </Row>
   );
 }

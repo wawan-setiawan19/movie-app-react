@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
+import { Link } from "react-router-dom";
 import logo from "../logo.svg";
 function Header({ theme }) {
   const [navbar, setNavbar] = useState(false);
@@ -11,29 +13,37 @@ function Header({ theme }) {
 
   return (
     <Navbar
-      bg={navbar === true ? "dark" : "transparent"}
+      bg={navbar === true ? "gradient" : "transparent"}
       variant={theme}
       fixed="top"
       collapseOnSelect
       expand="lg"
     >
       <Container>
-        <Navbar.Brand href="#home">
-          <img
-            alt=""
-            src={logo}
-            width="30"
-            height="30"
-            className="d-inline-block align-top"
-          />
-          React Bootstrap
-        </Navbar.Brand>
+        <Link to="/" className="link">
+          <Navbar.Brand>
+            <img
+              alt=""
+              src={logo}
+              width="30"
+              height="30"
+              className="d-inline-block align-top"
+            />
+            React Bootstrap
+          </Navbar.Brand>
+        </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ml-auto navbar-dark">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#fitur">Fitur</Nav.Link>
-            <Nav.Link href="#about">About</Nav.Link>
+            <LinkContainer to="/">
+              <Nav.Link>Home</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/fitur">
+              <Nav.Link>Fitur</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="about">
+              <Nav.Link>About</Nav.Link>
+            </LinkContainer>
           </Nav>
         </Navbar.Collapse>
       </Container>

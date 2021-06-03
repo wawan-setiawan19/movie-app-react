@@ -1,15 +1,20 @@
-import Footer from "./Components/Footer";
 import Header from "./Components/Header";
 import Main from "./Components/Main";
 import "./App.css";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import DetailMovie from "./Components/DetailMovie";
 
 function App() {
   return (
-    <>
-      <Header theme="dark" />
-      <Main />
-      <Footer />
-    </>
+    <BrowserRouter>
+      <>
+        <Header theme="dark" />
+        <Switch>
+          <Route exact path="/" children={<Main />} />
+          <Route path="/:id" children={<DetailMovie />} />
+        </Switch>
+      </>
+    </BrowserRouter>
   );
 }
 

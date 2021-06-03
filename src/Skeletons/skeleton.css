@@ -1,9 +1,10 @@
 .title,
 .text,
-.button {
-  overflow: hidden;
+.button,
+.image {
   position: relative;
   margin-top: 10px;
+  overflow: hidden;
 }
 
 .wrapper {
@@ -22,7 +23,6 @@
 
 .title {
   height: 32px;
-  width: 50%;
   margin: 0 auto;
 }
 
@@ -33,6 +33,7 @@
 .image {
   max-height: 400px;
   min-height: 300px;
+  margin-top: 0px;
 }
 
 .shimer {
