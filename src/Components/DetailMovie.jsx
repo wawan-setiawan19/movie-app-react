@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import DetailElement from "../elements/DetailElement";
 import DetailSkeleton from "../Skeletons/DetailSkeleton";
 
 function DetailMovie() {
@@ -13,14 +14,14 @@ function DetailMovie() {
     setDetail(data);
   };
 
-  // useEffect(() => {
-  //   getData();
-  // }, []);
-  return (
-    <>
-      {detail == null ? <DetailSkeleton /> : <div>{detail.original_title}</div>}
-    </>
-  );
+  useEffect(() => {
+    let mounted = true;
+    getData();
+    return function cleanup() {
+      mounted = false;
+    };
+  }, []);
+  return <>{detail == null ? <DetailSkeleton /> : <DetailElement />}</>;
 }
 
 export default DetailMovie;
