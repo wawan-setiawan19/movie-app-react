@@ -16,14 +16,14 @@ function CardElement({ poster, title, idMovie }) {
       >
         {title}
       </Card.Title>
-      <Button
-        className="bg-gradient"
-        style={{ margin: "10px", border: "none" }}
-      >
-        <Link to={`${idMovie}`} className="link">
+      <Link to={`${idMovie}`} className="link" style={{ padding: 10 }}>
+        <Button
+          className="bg-gradient"
+          style={{ width: "100%", border: "none", display: "block" }}
+        >
           Lihat Detail
-        </Link>
-      </Button>
+        </Button>
+      </Link>
     </Card>
   );
 }

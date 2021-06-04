@@ -1,15 +1,20 @@
-import React from 'react'
-import { Col, Row } from 'react-bootstrap';
+import React from "react";
+import { Col, Image, Row } from "react-bootstrap";
+import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
-function DetailElement() {
+function DetailElement({ poster, title, backdrop, rating }) {
   const styleDetailWrapper = {
     position: "relative",
     height: "100vh",
     overflow: "hidden",
+    backgroundImage: `url(https://image.tmdb.org/t/p/original${backdrop})`,
+    backgroundSize: "cover",
   };
   const styleWrapperItem = {
     borderRadius: "5px",
-    backgroundColor: "#ccc",
+    backgroundColor: "rgba(255,255,255,0.2)",
+    backdropFilter: "blur(5px)",
     top: "50%",
     position: "absolute",
     width: "80%",
@@ -18,47 +23,57 @@ function DetailElement() {
     padding: "20px",
   };
   return (
-    <div className="wrapper" style={styleDetailWrapper}>
-      <div className="shimer"></div>
+    <div style={styleDetailWrapper}>
       <div style={styleWrapperItem}>
         <Row>
           <Col sm={12} md={6} lg={3}>
-            <BasicSkeleton type="image" />
+            <Image src={`https://image.tmdb.org/t/p/original${poster}`} fluid />
+            <div
+              style={{ width: 50, position: "absolute", bottom: 10, right: 20 }}
+            >
+              <CircularProgressbar
+                value={rating * 10}
+                text={`${rating * 10}%`}
+                styles={buildStyles({
+                  textColor: "#fff",
+                  textSize: "32px",
+                  pathColor: `#8E0E00`,
+                  trailColor: "#af675f",
+                })}
+                strokeWidth={15}
+              />
+            </div>
           </Col>
           <Col sm={12} md={6} lg={9}>
             <Row>
-              <Col>
-                <BasicSkeleton type="title" />
+              <Col sm={10}>
+                <h1 className="text-white">{title}</h1>
               </Col>
             </Row>
             <Row>
-              {[1, 2, 3].map((element) => (
-                <Col s={12} lg={2} key={element}>
-                  <BasicSkeleton type="text" />
-                </Col>
-              ))}
+              <Col s={12} lg={2}>tahun</Col>
             </Row>
             <Row>
               <Col s={4} lg={2}>
-                <BasicSkeleton type="text" />
+                {/* <BasicSkeleton type="text" /> */}
               </Col>
             </Row>
             <Row>
               <Col s={12}>
-                <BasicSkeleton type="text" heightSkeleton="64px" />
+                {/* <BasicSkeleton type="text" heightSkeleton="64px" /> */}
               </Col>
             </Row>
             <Row>
               {[1, 2].map((element) => (
                 <Col s={12} lg={2} key={element}>
-                  <BasicSkeleton type="text" />
+                  {/* <BasicSkeleton type="text" /> */}
                 </Col>
               ))}
             </Row>
             <Row>
               {[1, 2, 3, 4].map((element) => (
                 <Col s={12} lg={3} key={element}>
-                  <BasicSkeleton type="text" heightSkeleton="80px" />
+                  {/* <BasicSkeleton type="text" heightSkeleton="80px" /> */}
                 </Col>
               ))}
             </Row>
@@ -69,4 +84,4 @@ function DetailElement() {
   );
 }
 
-export default DetailElement
+export default DetailElement;

@@ -21,7 +21,20 @@ function DetailMovie() {
       mounted = false;
     };
   }, []);
-  return <>{detail == null ? <DetailSkeleton /> : <DetailElement />}</>;
+  return (
+    <>
+      {detail == null ? (
+        <DetailSkeleton />
+      ) : (
+        <DetailElement
+          poster={detail.poster_path}
+          backdrop={detail.backdrop_path}
+            title={detail.original_title}
+            rating={detail.vote_average}
+        />
+      )}
+    </>
+  );
 }
 
 export default DetailMovie;
