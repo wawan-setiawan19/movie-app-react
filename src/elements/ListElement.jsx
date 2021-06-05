@@ -12,6 +12,7 @@ function ListElement({ categories }) {
     const data = await response.json();
     setList(data.results);
   };
+  const title = categories.split("_");
   useEffect(() => {
     let mounted = true;
     getData();
@@ -21,23 +22,28 @@ function ListElement({ categories }) {
   }, []);
 
   return (
-    <Row style={{ marginBottom: "10px" }}>
-      {list == null
-        ? [1, 2, 3, 4, 5, 6, 7, 8].map((element) => (
-            <Col xs={6} md={4} lg={3} key={element}>
-              <CardSkeleton />
-            </Col>
-          ))
-        : list.map((element) => (
-            <Col xs={6} md={4} lg={3} key={element.id}>
-              <CardElement
-                title={element.original_title}
-                poster={element.poster_path}
-                idMovie={element.id}
-              />
-            </Col>
-          ))}
-    </Row>
+    <>
+      <h2
+        style={{ textTransform: "uppercase" }}
+      >{`${title[0]} ${title[1]}`}</h2>
+      <Row style={{ marginBottom: "10px" }}>
+        {list == null
+          ? [1, 2, 3, 4, 5, 6, 7, 8].map((element) => (
+              <Col xs={6} md={4} lg={3} key={element}>
+                <CardSkeleton />
+              </Col>
+            ))
+          : list.map((element) => (
+              <Col xs={6} md={4} lg={3} key={element.id}>
+                <CardElement
+                  title={element.original_title}
+                  poster={element.poster_path}
+                  idMovie={element.id}
+                />
+              </Col>
+            ))}
+      </Row>
+    </>
   );
 }
 

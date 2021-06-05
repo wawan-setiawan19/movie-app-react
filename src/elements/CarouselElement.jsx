@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Carousel } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import CarouselSkeleton from "../Skeletons/CarouselSkeleton";
 
 function CarouselElement({ categories }) {
@@ -30,24 +31,26 @@ function CarouselElement({ categories }) {
         <Carousel fade={true} indicators={false} nextIcon={""} prevIcon={""}>
           {movie.map((element) => (
             <Carousel.Item key={element.id} interval={2000}>
-              <img
-                className="d-block w-100"
-                src={`https://image.tmdb.org/t/p/original${element.backdrop_path}`}
-                alt="First slide"
-                style={{ height: "100vh", objectFit: "cover" }}
-              />
-              <Carousel.Caption
-                style={{
-                  backgroundColor: "rgba(0,0,0,0.4)",
-                  borderRadius: "10px",
-                  backdropFilter: "blur(10px)",
-                  padding: "0 20px",
-                }}
-              >
-                <h3>{element.original_title}</h3>
-                <p className="text-truncate">{element.overview}</p>
-              </Carousel.Caption>
-            </Carousel.Item>
+                <Link to={`/${element.id}`}>
+                <img
+                  className="d-block w-100"
+                  src={`https://image.tmdb.org/t/p/original${element.backdrop_path}`}
+                  alt="First slide"
+                  style={{ height: "100vh", objectFit: "cover" }}
+                />
+                    </Link>
+                <Carousel.Caption
+                  style={{
+                    backgroundColor: "rgba(0,0,0,0.4)",
+                    borderRadius: "10px",
+                    backdropFilter: "blur(10px)",
+                    padding: "0 20px",
+                  }}
+                >
+                  <h3>{element.original_title}</h3>
+                  <p className="text-truncate">{element.overview}</p>
+                </Carousel.Caption>
+              </Carousel.Item>
           ))}
         </Carousel>
       )}

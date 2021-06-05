@@ -29,7 +29,7 @@ function Header({ theme }) {
               height="30"
               className="d-inline-block align-top"
             />
-            React Bootstrap
+            One Movie
           </Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
