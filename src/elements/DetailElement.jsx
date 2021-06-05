@@ -29,10 +29,10 @@ function DetailElement({
     backgroundColor: "rgba(0,0,0,0.5)",
     backdropFilter: "blur(5px)",
     top: "50%",
-    position: "relative",
+    position: "absolute",
     width: "80%",
     left: "50%",
-    transform: "translate(-50%, 0%)",
+    transform: "translate(-50%, -50%)",
     padding: "20px",
     color: "white",
   };

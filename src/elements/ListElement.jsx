@@ -5,21 +5,17 @@ import CardElement from "./CardElement";
 
 function ListElement({ categories }) {
   const [list, setList] = useState(null);
-  const getData = async () => {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/movie/${categories}?api_key=222e6532a1c40df943028811b533a90d&language=en-US`
-    );
-    const data = await response.json();
-    setList(data.results);
-  };
   const title = categories.split("_");
   useEffect(() => {
-    let mounted = true;
-    getData();
-    return function cleanup() {
-      mounted = false;
+    const getData = async () => {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/${categories}?api_key=222e6532a1c40df943028811b533a90d&language=en-US`
+      );
+      const data = await response.json();
+      setList(data.results);
     };
-  }, []);
+    getData();
+  }, [categories]);
 
   return (
     <>
