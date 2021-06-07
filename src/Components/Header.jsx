@@ -1,21 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../logo.svg";
 function Header({ theme }) {
   const [navbar, setNavbar] = useState(false);
+  const url = useLocation().pathname;
   const changeBackground = () => {
     window.scrollY > 20 ? setNavbar(true) : setNavbar(false);
   };
-
   window.addEventListener("scroll", changeBackground);
+  useEffect(() => {
+    (url === "/about" || url === "/fitur") ? setNavbar(true) : setNavbar(false);
+  }, [url])
+
 
   return (
     <Navbar
-      bg={navbar === true ? "gradient" : "transparent"}
+      bg={navbar ? "gradient" : "transparent"}
       variant={theme}
-      fixed="top"
+      fixed={url === "/about" || url === "/fitur" ? "" : "top"}
       collapseOnSelect
       expand="lg"
     >

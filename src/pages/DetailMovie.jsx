@@ -8,18 +8,6 @@ function DetailMovie() {
   let { id } = useParams();
   const [detail, setDetail] = useState(null);
   const [trailer, setTrailer] = useState(null);
-  // const getData = async () => {
-  //   const response = await fetch(
-  //     `https://api.themoviedb.org/3/movie/${id}?api_key=222e6532a1c40df943028811b533a90d&language=en-US`
-  //   );
-  //   const data = await response.json();
-  //   const responseTraile = await fetch(
-  //     `https://api.themoviedb.org/3/movie/${id}/videos?api_key=222e6532a1c40df943028811b533a90d&language=en-US`
-  //   );
-  //   const dataTrailer = await responseTraile.json();
-  //   setDetail(data);
-  //   setTrailer(dataTrailer);
-  // };
 
   useEffect(() => {
     const getData = async () => {
